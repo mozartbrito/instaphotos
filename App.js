@@ -1,21 +1,55 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Fragment } from 'react';
+import { 
+  Text, 
+  View, 
+  Image, 
+  Dimensions,
+  ScrollView,
+  StyleSheet, 
+  FlatList
+} from 'react-native';
+
+import Cabecalho from './src/Components/Cabecalho';
+
+const largura = Dimensions.get("screen").width;
+
+const usuarios = [
+  {nome: 'Maria Silva'},
+  {nome: 'João Adalto'},
+  {nome: 'Guilherme Ancelmo'},
+
+]
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ScrollView>
+      <FlatList 
+        data={usuarios}
+        keyExtractor={(item, index) => index.toString() }
+        renderItem={({item})=>(
+          <Fragment>
+            <Cabecalho nomeUsuario={item.nome} />
+          <Image
+            source={require("./assets/images/produtividade.jpg")}
+            style={estilo.imagem}
+            />
+        </Fragment>
+        )}
+      
+      />
+        
+
+ 
+      
+    
+    </ScrollView>
+
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const estilo = StyleSheet.create({
+  imagem: {
+    width: largura, 
+    height: largura
+  }
+})
