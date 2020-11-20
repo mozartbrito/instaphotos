@@ -35,7 +35,7 @@ export default function App() {
           <Fragment>
             <Cabecalho 
               nomeUsuario={item.nome} 
-              imgUsuario={item.foto}
+              imgUsuario={item.userFoto}
               />
             <Foto 
               descricao={item.descricao} 
