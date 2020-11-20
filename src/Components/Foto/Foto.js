@@ -10,6 +10,10 @@ const Foto = () => {
                 style={estilo.imagem}
             />
             <Text>Descrição do post</Text>
+            <Image 
+                source={require("../../../assets/images/like-checked.png")} 
+                style={estilo.like}
+            />
         </View>
     )
 } 
