@@ -9,7 +9,8 @@ import {
   FlatList
 } from 'react-native';
 
-import Cabecalho from './src/Components/Cabecalho';
+import {Cabecalho} from './src/Components/Cabecalho/';
+import {Foto} from './src/Components/Foto/';
 
 const largura = Dimensions.get("screen").width;
 
@@ -17,6 +18,7 @@ const usuarios = [
   {nome: 'Maria Silva'},
   {nome: 'João Adalto'},
   {nome: 'Guilherme Ancelmo'},
+  {nome: 'Marcelo João'},
 
 ]
 
@@ -29,18 +31,11 @@ export default function App() {
         renderItem={({item})=>(
           <Fragment>
             <Cabecalho nomeUsuario={item.nome} />
-          <Image
-            source={require("./assets/images/produtividade.jpg")}
-            style={estilo.imagem}
-            />
+            <Foto />
         </Fragment>
         )}
       
       />
-        
-
- 
-      
     
     </ScrollView>
 
