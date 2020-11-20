@@ -8,9 +8,18 @@ const estilo = StyleSheet.create({
         height: largura
     },
     like: {
-        width: 40,
-        height: 40
+        width: 30,
+        height: 30,
+        margin: 10
+    },
+    curtidas: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
+    descricao: {
+        marginLeft: 10
     }
 })
+
 
 export default estilo;

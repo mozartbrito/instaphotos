@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { 
   Text, 
   View, 
@@ -14,15 +14,18 @@ import {Foto} from './src/Components/Foto/';
 
 const largura = Dimensions.get("screen").width;
 
-const usuarios = [
-  {nome: 'Maria Silva'},
-  {nome: 'João Adalto'},
-  {nome: 'Guilherme Ancelmo'},
-  {nome: 'Marcelo João'},
-
-]
-
 export default function App() {
+  const [usuarios, setUsuarios] = useState([]); //chamando a função useState
+
+  useEffect(() => {
+    const lerUsuarios = async () => {
+      const usuariosHTTP = await(fetch("http://hmgapi.harnet.com.br/api/usuarios.php"));
+      const usuariosJson = await usuariosHTTP.json();
+      setUsuarios(usuariosJson);
+    }
+    lerUsuarios();
+  }, [])
+
   return (
     <ScrollView>
       <FlatList 
@@ -30,8 +33,15 @@ export default function App() {
         keyExtractor={(item, index) => index.toString() }
         renderItem={({item})=>(
           <Fragment>
-            <Cabecalho nomeUsuario={item.nome} />
-            <Foto />
+            <Cabecalho 
+              nomeUsuario={item.nome} 
+              imgUsuario={item.foto}
+              />
+            <Foto 
+              descricao={item.descricao} 
+              foto={item.foto} 
+              curtidas={item.likes}
+            />
         </Fragment>
         )}
       
