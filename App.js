@@ -8,8 +8,10 @@ import {
   StyleSheet, 
   FlatList
 } from 'react-native';
+import lerUsuarios from './src/api/feed';
 
 import {Cabecalho} from './src/Components/Cabecalho/';
+import {Comentarios} from './src/Components/Comentarios';
 import {Foto} from './src/Components/Foto/';
 
 const largura = Dimensions.get("screen").width;
@@ -18,12 +20,7 @@ export default function App() {
   const [usuarios, setUsuarios] = useState([]); //chamando a função useState
 
   useEffect(() => {
-    const lerUsuarios = async () => {
-      const usuariosHTTP = await(fetch("http://hmgapi.harnet.com.br/api/usuarios.php"));
-      const usuariosJson = await usuariosHTTP.json();
-      setUsuarios(usuariosJson);
-    }
-    lerUsuarios();
+    lerUsuarios(setUsuarios);
   }, [])
 
   return (
@@ -41,6 +38,9 @@ export default function App() {
               descricao={item.descricao} 
               foto={item.foto} 
               curtidas={item.likes}
+            />
+            <Comentarios 
+              comentarios={item.comentarios}  
             />
         </Fragment>
         )}

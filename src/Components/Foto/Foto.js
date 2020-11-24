@@ -4,9 +4,20 @@ import estilo from './estilo'
 
 const Foto = ({ foto, descricao, curtidas }) => {
     const [curtiu,setCurtiu] = useState(false);
-    
+    const [likes,setLikes] = useState(curtidas)
+
+    let qtd = likes;
+
     const curtirFoto = () => {
+
+        if(curtiu) {
+            qtd--;
+        } else {
+            qtd++;
+        }
+        setLikes(qtd);
         setCurtiu(!curtiu)
+        
     }
     return (
         <View>
@@ -24,7 +35,7 @@ const Foto = ({ foto, descricao, curtidas }) => {
                         style={estilo.like}
                     />
                 </TouchableOpacity>
-                <Text>{curtidas} curtidas</Text>
+                <Text>{likes} curtidas</Text>
             </View>
         </View>
     )
