@@ -4,7 +4,11 @@ const estilo = StyleSheet.create({
     comentarios: {
         flexDirection: "row",
         alignItems: "center",
-        marginLeft: 5
+        marginLeft: 5,
+        marginBottom: 5,
+    },
+    username: {
+        fontWeight: "bold"
     }
 })
 

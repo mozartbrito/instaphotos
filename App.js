@@ -11,6 +11,7 @@ import {
 import lerUsuarios from './src/api/feed';
 
 import {Cabecalho} from './src/Components/Cabecalho/';
+import {Comentario} from './src/Components/Comentario';
 import {Comentarios} from './src/Components/Comentarios';
 import {Foto} from './src/Components/Foto/';
 
@@ -39,6 +40,7 @@ export default function App() {
               foto={item.foto} 
               curtidas={item.likes}
             />
+            <Comentario />
             <Comentarios 
               comentarios={item.comentarios}  
             />

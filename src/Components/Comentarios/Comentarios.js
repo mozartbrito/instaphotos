@@ -1,15 +1,21 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import estilo from './estilo'
 
 const Comentarios = ({comentarios}) => {
     return (
-        <View style={estilo.comentarios}>
-            <Text>username  </Text>
-            <Text>
-                Comentario
-            </Text>
-        </View>
+        <FlatList
+            data={comentarios}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+                <View style={estilo.comentarios}>
+                    <Text style={estilo.username}>{item.userName}  </Text>
+                    <Text>
+                        {item.comentario}
+                    </Text>
+                </View>
+            )}
+        />
     )
 }
 
