@@ -9,6 +9,20 @@ const estilo = StyleSheet.create({
     },
     username: {
         fontWeight: "bold"
+    },
+    enviaComentario: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: 2,
+        marginLeft: 5,
+        marginRight: 5
+    },
+    input: {
+        flex: 1
+    },
+    imagem: {
+        width: 30,
+        height:30
     }
 })
 
